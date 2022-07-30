@@ -9,7 +9,7 @@ int main(void)
 {
 	char **parsedAv;
 	
-	*envi[10] = {"PATH=/bin", NULL};
+	char *envi[10] = {"PATH=/bin", NULL};
 	while (1)
 	{
 		prompt_cmd();
@@ -21,7 +21,9 @@ int main(void)
 			execve(parsedAv[0], parsedAv, envi);
 /*			for (j = 0; parsedAv[j] != NULL; j++)
                 		printf("String: %s\n", parsedAv[j]);
-*/
+*/			if (strcmp(parsedAv[0], "exit") == 0)
+			break;
+
 	}
 
 	return (0);

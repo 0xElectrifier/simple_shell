@@ -15,6 +15,7 @@ char **read_cmd(void)
 		perror("Error:");
 
 
+	printf("%s\n", av);
 	parsedStr = malloc(sizeof(char) * _strlen(av));
 	if (parsedStr == NULL)
 		exit(EXIT_FAILURE);
