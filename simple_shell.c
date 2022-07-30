@@ -5,13 +5,11 @@
  *
  * Return: Always 0
  */
-int main(int ac, char **av)
+int main(void)
 {
-	char **parsedAv, *envi[10];
-	(void)av;
-	(void)ac;
-
-	*envi = {"PATH=/bin", NULL};
+	char **parsedAv;
+	
+	*envi[10] = {"PATH=/bin", NULL};
 	while (1)
 	{
 		prompt_cmd();
