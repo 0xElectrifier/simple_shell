@@ -8,23 +8,25 @@
  */
 char **read_cmd(void)
 {
-	char **parsedStr, *pStr, *av = NULL;
+	char **parsedStr, *pStr, *av = NULL, *delim = " \n";
 	size_t av_size = 0, i = 0;
+	ssize_t get_l;
 
-	if (getline(&av, &av_size, stdin) == -1)
-		perror("Error:");
+	get_l = getline(&av, &av_size, stdin);
+	if (av == NULL)
+		return (NULL);
+	if (get_l == -1)
+		perror("Error: 1");
 
-
-	printf("%s\n", av);
 	parsedStr = malloc(sizeof(char) * _strlen(av));
 	if (parsedStr == NULL)
 		exit(EXIT_FAILURE);
 
-	pStr = strtok(av, " ");
-	while (pStr != NULL)
+	pStr = strtok(av, delim);
+	while (pStr)
 	{
 		parsedStr[i++] = strdup(pStr);
-		pStr= strtok(NULL, " ");
+		pStr= strtok(NULL, delim);
 	}
 	parsedStr[i] = NULL;
 
