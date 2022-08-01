@@ -14,9 +14,9 @@ char **read_cmd(void)
 
 	get_l = getline(&av, &av_size, stdin);
 	if (get_l == -1)
-	{
-		av = "exit";
-	}
+		av = strdup("exit ");
+	if (strcmp(av, "\n") == 0)
+		return (NULL);
 
 	parsedStr = malloc(sizeof(char) * _strlen(av));
 	if (parsedStr == NULL)
