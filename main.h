@@ -9,3 +9,4 @@ void prompt_cmd(void);
 char **read_cmd(void);
 char **parse_cmd(char *str);
 int _strlen(char *s);
+void _perror(int exit_value);
