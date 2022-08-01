@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 	char **parsedAv;
 
 	char *envi[3] = {"PATH=/bin", NULL};
-	printf("count: %d\n", argc);
 	if (argc > 1)
 	{
 		if (execve(argv[1], argv, NULL) == -1)
@@ -20,11 +19,16 @@ int main(int argc, char **argv)
 	}
 	while (1)
 	{
-		prompt_cmd();
+		if (isatty(fileno(stdin)))
+			prompt_cmd();
 		parsedAv = read_cmd();
+		if (parsedAv == NULL)
+			continue;
 
 		if (strcmp(parsedAv[0], "exit") == 0)
-			break;
+		{
+			exit(EXIT_SUCCESS);
+		}
 
 		pid_i = fork();
 		if (pid_i != 0)
@@ -32,7 +36,10 @@ int main(int argc, char **argv)
 		else
 		/*	execute(parsedAv
 		*/	if (execve(parsedAv[0], parsedAv, envi) == -1)
-				printf("Error from exe\n");
+			{
+				_perror(-1);
+				break;
+			}
 	}
 
 	return (0);
