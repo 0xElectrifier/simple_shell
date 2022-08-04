@@ -5,13 +5,13 @@
  *
  * Return: Always 0
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
 	int pid_i;
 	char **parsedAv;
-
+/*
 	char *envi[3] = {"PATH=/bin", NULL};
-	if (argc > 1)
+*/	if (argc > 1)
 	{
 		if (execve(argv[1], argv, NULL) == -1)
 			_perror(-1);
@@ -35,12 +35,13 @@ int main(int argc, char **argv)
 			wait(NULL);
 		else
 		/*	execute(parsedAv
-		*/	if (execve(parsedAv[0], parsedAv, envi) == -1)
+		*/	if (execve(parsedAv[0], parsedAv, envp) == -1)
 			{
 				_perror(-1);
 				break;
 			}
 	}
+	printf("\n");
 
 	return (0);
 }
