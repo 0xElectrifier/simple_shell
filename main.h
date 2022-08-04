@@ -17,7 +17,7 @@ typedef struct exec_l
 typedef struct arg_l
 {
 	char *str;
-	struct arg_l next;
+	struct arg_l *next;
 } arg_l;
 
 

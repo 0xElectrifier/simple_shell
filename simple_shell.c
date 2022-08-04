@@ -8,7 +8,7 @@
 int main(int argc, char **argv, char **envp)
 {
 	int pid_i;
-	char **parsedAv;
+	exec_l *parsedAv;
 
 	if (argc > 1)
 	{
@@ -35,7 +35,7 @@ int main(int argc, char **argv, char **envp)
 			wait(NULL);
 		else
 		/*	execute(parsedAv
-		*/	if (execve(parsedAv[0], parsedAv, envp) == -1)
+		*/	if (execve(parsedAv->argv[0], parsedAv->argv, envp) == -1)
 			{
 				_perror(-1);
 				break;

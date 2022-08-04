@@ -6,9 +6,9 @@
  *
  * Return: nothing
  */
-char **read_cmd(void)
+exec_l **read_cmd(void)
 {
-	cmd_s *parsedStr;
+	exec_l *parsedStr;
 	arg_l *parsedAv;
 	char *token, **arr, *av = NULL, *delim = " \n";
 	size_t av_size = 0, i = 0;
@@ -24,16 +24,16 @@ char **read_cmd(void)
 	parsedAv = tokenize_arg(av, delim);
 	copyP_Av = parsedAv;
 	op_count = count_cmd(parsedAv);
-	for (i = 0; i < op_count; i++)
 	while (copyP_Av != NULL)
 	{
 		arr = track_cmd(&copyP_Av);
 		construct_execL(parsedStr, arr, copyP_Av);
 
-		if (copyParsedAv->next != NULL)
-			copyParsedAv = copyParsedAv->next;
+		if (copyP_Av && (copyP_Av->next != NULL))
+			copyP_Av = copyP_Av->next;
+		else
+			break;
 	}
-	parsedStr[i] = NULL;
 
 	return (parsedStr);
 }

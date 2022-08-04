@@ -3,7 +3,7 @@
 int main(void)
 {
 	int s;
-	exec_l temp = NULL;
+	exec_l *temp = NULL;
 /*
 	if ((s = is_operator("||")))
 	printf("Correct\n");
@@ -11,8 +11,9 @@ int main(void)
 		printf("Not true\n");
 */
 
-	if (temp || temp->next != NULL))
-		printf(
+	if (temp && (temp->next != NULL))
+		printf("Hello\n");
+	printf("False\n");
 
 	return (0);
 }
