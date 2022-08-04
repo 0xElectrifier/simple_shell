@@ -9,9 +9,8 @@ int main(int argc, char **argv, char **envp)
 {
 	int pid_i;
 	char **parsedAv;
-/*
-	char *envi[3] = {"PATH=/bin", NULL};
-*/	if (argc > 1)
+
+	if (argc > 1)
 	{
 		if (execve(argv[1], argv, NULL) == -1)
 			_perror(-1);
@@ -19,6 +18,7 @@ int main(int argc, char **argv, char **envp)
 	}
 	while (1)
 	{
+		printf("New\n");
 		if (isatty(fileno(stdin)))
 			prompt_cmd();
 		parsedAv = read_cmd();

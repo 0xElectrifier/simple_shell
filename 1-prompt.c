@@ -8,4 +8,5 @@
 void prompt_cmd(void)
 {
 	printf("$ ");
+	_exit(0);
 }

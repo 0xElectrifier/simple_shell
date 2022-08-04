@@ -1,13 +1,13 @@
 #include "lists.h"
 
 /**
- * add_node_end - adds a new node at the end of a listint_t list
+ * construct_argL - adds a new node at the end of a listint_t list
  * @head: pointer to pointer of head (first element in the list)
  * @str: string to be appended to the list
  *
  * Return: address of the new element, of NULL if it failed
  */
-arg_l *add_node_end(arg_l **head, char *str)
+arg_l *construct_argL(arg_l **head, char *str)
 {
 	arg_l *copy, *new;
 

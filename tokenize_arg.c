@@ -5,16 +5,16 @@
  * @str: string to be tokenized
  * @delim: delimeter to work with
  *
- * Return: pointer to the head of a linked list containing the parsedStr
+ * Return: pointer to the head of a linked list containing the parsed string
  */
 arg_l *tokenize_arg(char *str, char *delim)
 {
 	char pStr;
-	arg_l *parsedStr = NULL;
+	arg_l *parsedAv = NULL;
 
 	pStr = strtok(str, delim);
 	while (pStr)
-		add_node_end(parsedStr, pStr);
+		construct_argL(parsedAv, pStr);
 
-	return (parsedStr);
+	return (parsedAv);
 }

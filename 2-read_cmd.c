@@ -8,9 +8,11 @@
  */
 char **read_cmd(void)
 {
-	char **parsedStr, *pStr, *av = NULL, *delim = " \n";
+	cmd_s *parsedStr;
+	arg_l *parsedAv;
+	char *token, **arr, *av = NULL, *delim = " \n";
 	size_t av_size = 0, i = 0;
-	ssize_t get_l;
+	ssize_t get_l, i, op_count;
 
 	get_l = getline(&av, &av_size, stdin);
 	if (get_l == -1)
@@ -18,17 +20,23 @@ char **read_cmd(void)
 	if (strcmp(av, "\n") == 0)
 		return (NULL);
 
-	parsedStr = malloc(sizeof(char) * _strlen(av));
-	if (parsedStr == NULL)
-		_perror(EXIT_FAILURE);
 
-	pStr = strtok(av, delim);
-	while (pStr)
+	parsedAv = tokenize_arg(av, delim);
+	copyP_Av = parsedAv;
+	op_count = count_cmd(parsedAv);
+	for (i = 0; i < op_count; i++)
+	while (copyP_Av != NULL)
 	{
-		parsedStr[i++] = strdup(pStr);
-		pStr= strtok(NULL, delim);
+		arr = track_cmd(&copyP_Av);
+		construct_execL(parsedStr, arr, copyP_Av);
+
+		if (copyParsedAv->next != NULL)
+			copyParsedAv = copyParsedAv->next;
 	}
 	parsedStr[i] = NULL;
 
 	return (parsedStr);
 }
+/*
+char **tokenize_arg(char
+*/
