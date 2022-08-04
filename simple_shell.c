@@ -23,11 +23,13 @@ int main(int argc, char **argv, char **envp)
 		parsedAv = read_cmd();
 		if (parsedAv == NULL)
 			continue;
-
+/* Found bug on line 26 */
 		if (strcmp(parsedAv->argv[0], "exit") == 0)
 		{
+			printf("kdfdkj\n");
 			exit(EXIT_SUCCESS);
 		}
+printf("kdfdkj\n");
 
 		pid_i = fork();
 		if (pid_i != 0)

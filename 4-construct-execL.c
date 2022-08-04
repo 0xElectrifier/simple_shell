@@ -34,5 +34,6 @@ exec_l *construct_execL(exec_l **head, char **arr, arg_l *parsedAv)
 			copy = copy->next;
 		copy->next = new;
 	}
+
 	return (*head);
 }

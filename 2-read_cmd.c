@@ -8,7 +8,7 @@
  */
 exec_l *read_cmd(void)
 {
-	exec_l *parsedStr;
+	exec_l *parsedStr = NULL;
 	arg_l *parsedAv, *copyP_Av;
 	char **arr, *av = NULL, *delim = " \n";
 	size_t av_size = 0;
@@ -27,7 +27,6 @@ exec_l *read_cmd(void)
 */	while (copyP_Av != NULL)
 	{
 		arr = track_cmd(&copyP_Av);
-printf("Test\n");
 		construct_execL(&parsedStr, arr, copyP_Av);
 		if (copyP_Av && (copyP_Av->next != NULL))
 			copyP_Av = copyP_Av->next;
