@@ -30,3 +30,8 @@ int _strlen(char *s);
 void _perror(int exit_value);
 int is_operator(char *str);
 arg_l *add_node_end(arg_l **head, char *str);
+arg_l *tokenize_arg(char *str, char *delim);
+arg_l *construct_argL(arg_l **head, char *str);
+int count_cmd(arg_l *str);
+int is_operator(char *str);
+exec_l *construct_execL(exec_l **head, char **arr, arg_l parsedAv);
