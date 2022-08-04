@@ -1,0 +1,113 @@
+2-read_cmd.c: In function ‘read_cmd’:
+2-read_cmd.c:25:9: error: ‘copyP_Av’ undeclared (first use in this function)
+   25 |         copyP_Av = parsedAv;
+      |         ^~~~~~~~
+2-read_cmd.c:25:9: note: each undeclared identifier is reported only once for each function it appears in
+2-read_cmd.c:29:23: error: implicit declaration of function ‘track_cmd’ [-Werror=implicit-function-declaration]
+   29 |                 arr = track_cmd(&copyP_Av);
+      |                       ^~~~~~~~~
+2-read_cmd.c:30:33: error: passing argument 1 of ‘construct_execL’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   30 |                 construct_execL(parsedStr, arr, copyP_Av);
+      |                                 ^~~~~~~~~
+      |                                 |
+      |                                 exec_l *
+In file included from 2-read_cmd.c:1:
+main.h:37:34: note: expected ‘exec_l **’ but argument is of type ‘exec_l *’
+   37 | exec_l *construct_execL(exec_l **head, char **arr, arg_l parsedAv);
+      |                         ~~~~~~~~~^~~~
+2-read_cmd.c:15:24: error: variable ‘op_count’ set but not used [-Werror=unused-but-set-variable]
+   15 |         ssize_t get_l, op_count;
+      |                        ^~~~~~~~
+2-read_cmd.c:14:29: error: unused variable ‘i’ [-Werror=unused-variable]
+   14 |         size_t av_size = 0, i = 0;
+      |                             ^
+2-read_cmd.c:13:15: error: unused variable ‘token’ [-Werror=unused-variable]
+   13 |         char *token, **arr, *av = NULL, *delim = " \n";
+      |               ^~~~~
+cc1: all warnings being treated as errors
+3-Construct-ArgL.c:1:10: fatal error: lists.h: No such file or directory
+    1 | #include "lists.h"
+      |          ^~~~~~~~~
+compilation terminated.
+4-construct-execL.c:1:10: fatal error: lists.h: No such file or directory
+    1 | #include "lists.h"
+      |          ^~~~~~~~~
+compilation terminated.
+count_cmd.c: In function ‘count_cmd’:
+count_cmd.c:13:22: error: invalid initializer
+   13 |         arg_l copy = str;
+      |                      ^~~
+count_cmd.c:15:16: error: used struct type value where scalar is required
+   15 |         while (copy)
+      |                ^~~~
+count_cmd.c:17:37: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   17 |                 if (is_operator(copy->str))
+      |                                     ^~
+count_cmd.c:21:28: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   21 |                 copy = copy->next;
+      |                            ^~
+simple_shell.c: In function ‘main’:
+simple_shell.c:28:36: error: incompatible type for argument 1 of ‘strcmp’
+   28 |                 if (strcmp(parsedAv[0], "exit") == 0)
+      |                            ~~~~~~~~^~~
+      |                                    |
+      |                                    exec_l
+In file included from main.h:3,
+                 from simple_shell.c:1:
+/usr/include/string.h:156:32: note: expected ‘const char *’ but argument is of type ‘exec_l’
+  156 | extern int strcmp (const char *__s1, const char *__s2)
+      |                    ~~~~~~~~~~~~^~~~
+tes.c: In function ‘main’:
+tes.c:5:13: error: unused variable ‘s’ [-Werror=unused-variable]
+    5 |         int s;
+      |             ^
+cc1: all warnings being treated as errors
+tokenize_arg.c: In function ‘tokenize_arg’:
+tokenize_arg.c:15:14: error: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   15 |         pStr = strtok(str, delim);
+      |              ^
+tokenize_arg.c:17:32: error: passing argument 1 of ‘construct_argL’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   17 |                 construct_argL(parsedAv, pStr);
+      |                                ^~~~~~~~
+      |                                |
+      |                                arg_l *
+In file included from tokenize_arg.c:1:
+main.h:34:31: note: expected ‘arg_l **’ but argument is of type ‘arg_l *’
+   34 | arg_l *construct_argL(arg_l **head, char *str);
+      |                       ~~~~~~~~^~~~
+tokenize_arg.c:17:42: error: passing argument 2 of ‘construct_argL’ makes pointer from integer without a cast [-Werror=int-conversion]
+   17 |                 construct_argL(parsedAv, pStr);
+      |                                          ^~~~
+      |                                          |
+      |                                          char
+In file included from tokenize_arg.c:1:
+main.h:34:43: note: expected ‘char *’ but argument is of type ‘char’
+   34 | arg_l *construct_argL(arg_l **head, char *str);
+      |                                     ~~~~~~^~~
+cc1: all warnings being treated as errors
+track_cmd.c: In function ‘track_cmd’:
+track_cmd.c:17:22: error: invalid initializer
+   17 |         arg_l copy = *head;
+      |                      ^
+track_cmd.c:19:34: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   19 |         while (!(is_operator(copy->str)))
+      |                                  ^~
+track_cmd.c:22:40: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   22 |                 arr[(count - 1)] = copy->str;
+      |                                        ^~
+track_cmd.c:24:25: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   24 |                 if (copy->next != NULL)
+      |                         ^~
+track_cmd.c:25:36: error: invalid type argument of ‘->’ (have ‘arg_l’)
+   25 |                         copy = copy->next;
+      |                                    ^~
+track_cmd.c:32:18: error: incompatible types when assigning to type ‘arg_l *’ from type ‘arg_l’
+   32 |         *head =  copy;
+      |                  ^~~~
+track_cmd.c:21:17: error: ignoring return value of ‘realloc’ declared with attribute ‘warn_unused_result’ [-Werror=unused-result]
+   21 |                 realloc(arr, (sizeof(char*) * ++count));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+track_cmd.c:29:9: error: ignoring return value of ‘realloc’ declared with attribute ‘warn_unused_result’ [-Werror=unused-result]
+   29 |         realloc(arr, (sizeof(char*) * ++count));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors

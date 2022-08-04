@@ -9,12 +9,15 @@
  */
 arg_l *tokenize_arg(char *str, char *delim)
 {
-	char pStr;
+	char *pStr;
 	arg_l *parsedAv = NULL;
 
 	pStr = strtok(str, delim);
 	while (pStr)
-		construct_argL(parsedAv, pStr);
+	{
+		construct_argL(&parsedAv, pStr);
+		pStr = strtok(NULL, delim);
+	}
 
 	return (parsedAv);
 }

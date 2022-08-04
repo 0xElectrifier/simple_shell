@@ -12,13 +12,17 @@
  */
 char **track_cmd(arg_l **head)
 {
-	char **arr;
-	int count = 0;
-	arg_l copy = *head;
+	char **arr = NULL, *check_return;
+	int count = 1;
+	arg_l *copy = *head;
 
+	arr = malloc(sizeof(char *) * count);
 	while (!(is_operator(copy->str)))
 	{
-		realloc(arr, (sizeof(char*) * ++count));
+		printf("Test\n");
+		check_return = realloc(&arr, (sizeof(char*) * ++count));
+		if (check_return == NULL)
+			return (NULL);
 		arr[(count - 1)] = copy->str;
 
 		if (copy->next != NULL)
@@ -26,8 +30,15 @@ char **track_cmd(arg_l **head)
 		else
 			break;
 	}
-	realloc(arr, (sizeof(char*) * ++count));
-	arr[(count - 1)] = NULL;
+	arr = realloc(&arr, (sizeof(char*) * ++count));
+	if (arr == NULL)
+	{
+		printf("Tesddfht\n");
+		return (NULL);
+	}
+
+	arr[(count - 1)] = copy->str;
+	printf("Tesddfht\n");
 
 	*head =  copy;
 

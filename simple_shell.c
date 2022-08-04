@@ -18,14 +18,13 @@ int main(int argc, char **argv, char **envp)
 	}
 	while (1)
 	{
-		printf("New\n");
 		if (isatty(fileno(stdin)))
 			prompt_cmd();
 		parsedAv = read_cmd();
 		if (parsedAv == NULL)
 			continue;
 
-		if (strcmp(parsedAv[0], "exit") == 0)
+		if (strcmp(parsedAv->argv[0], "exit") == 0)
 		{
 			exit(EXIT_SUCCESS);
 		}

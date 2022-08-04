@@ -10,15 +10,17 @@
 int is_operator(char *str)
 {
 	int i;
-	char *s[4] = {"||", "&&", ";", NULL};
+	char *s[4] = {NULL, "||", "&&", ";"};
+
 
 	if (str == NULL)
 		return (0);
-	for(i = 1; s[i] != NULL; i++)
+
+	for(i = 1; s[i] && (i < 4); i++)
 	{
 		if (strcmp(s[i], str) == 0)
-			break;
+			return (i);
 	}
 
-	return (i);
+	return (0);
 }

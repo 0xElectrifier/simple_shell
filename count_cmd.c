@@ -10,7 +10,7 @@
 int count_cmd(arg_l *str)
 {
 	int count = 0;
-	arg_l copy = str;
+	arg_l *copy = str;
 
 	while (copy)
 	{

@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "main.h"
 
 /**
  * construct_execL - adds a new node at the end of a listint_t list
@@ -7,7 +7,7 @@
  *
  * Return: address of the new element, of NULL if it failed
  */
-exec_l *construct_execL(exec_l **head, char **arr, arg_l parsedAv)
+exec_l *construct_execL(exec_l **head, char **arr, arg_l *parsedAv)
 {
 	exec_l *copy, *new;
 	char *temp;
