@@ -18,12 +18,17 @@ char **track_cmd(arg_l **head)
 	(void) check_return;
 
 	len_l = list_len(*head);
+	
 	arr = malloc(sizeof(char*) * (len_l + 1));
 	if (arr == NULL)
 		return (NULL);
 
 	while (!(is_operator(copy->str)))
 	{
+		if (count == 0 && copy->str[0] != '/')
+		{
+			modFirst_cmd(copy);
+		}
 		arr[count++] = copy->str;
 
 		if (copy->next != NULL)

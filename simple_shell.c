@@ -5,11 +5,12 @@
  *
  * Return: Always 0
  */
-int main(int argc, char **argv, char **envp)
+int main(int argc, char **argv)
 {
 	int pid_i;
 	exec_l *parsedAv;
-	(void)envp;
+	char *envp[2] = {"PATH=bin", NULL};
+	
 
 	if (argc > 1)
 	{
@@ -26,21 +27,13 @@ int main(int argc, char **argv, char **envp)
 			continue;
 /* Found bug on line 26 
 		printf("simple, %s\n", parsedAv->argv[0]);
-*/		if (strcmp(parsedAv->argv[0], "exit") == 0)
+*/		if (strcmp(parsedAv->argv[0], "/bin/exit") == 0)
 		{
 			break;
 		}
 
-		pid_i = fork();
-		if (pid_i != 0)
-			wait(NULL);
-		else
-		/*	execute(parsedAv
-		*/	if (execve(parsedAv->argv[0], parsedAv->argv, envp) == -1)
-			{
-				_perror(-1);
-				break;
-			}
+		if (exec_cmd(parsedAv, envp) == -1)
+			break;
 	}
 	printf("\n");
 

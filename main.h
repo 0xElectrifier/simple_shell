@@ -37,4 +37,7 @@ arg_l *construct_argL(arg_l **head, char *str);
 int count_cmd(arg_l *str);
 int is_operator(char *str);
 size_t list_len(const arg_l *h);
+void modFirst_cmd(arg_l *head);
 exec_l *construct_execL(exec_l **head, char **arr, arg_l *parsedAv);
+
+int exec_cmd(exec_l *cmd_arr, char **envp);
