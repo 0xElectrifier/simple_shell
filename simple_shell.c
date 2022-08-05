@@ -9,6 +9,7 @@ int main(int argc, char **argv, char **envp)
 {
 	int pid_i;
 	exec_l *parsedAv;
+	(void)envp;
 
 	if (argc > 1)
 	{
@@ -23,13 +24,12 @@ int main(int argc, char **argv, char **envp)
 		parsedAv = read_cmd();
 		if (parsedAv == NULL)
 			continue;
-/* Found bug on line 26 */
-		if (strcmp(parsedAv->argv[0], "exit") == 0)
+/* Found bug on line 26 
+		printf("simple, %s\n", parsedAv->argv[0]);
+*/		if (strcmp(parsedAv->argv[0], "exit") == 0)
 		{
-			printf("kdfdkj\n");
-			exit(EXIT_SUCCESS);
+			break;
 		}
-printf("kdfdkj\n");
 
 		pid_i = fork();
 		if (pid_i != 0)

@@ -13,29 +13,26 @@
 char **track_cmd(arg_l **head)
 {
 	char **arr = NULL, *check_return;
-	int count = 1;
+	int count = 0, len_l;
 	arg_l *copy = *head;
 	(void) check_return;
-/*
-	arr = malloc(sizeof(char *) * count);
-*/	while (!(is_operator(copy->str)))
+
+	len_l = list_len(*head);
+	arr = malloc(sizeof(char*) * (len_l + 1));
+	if (arr == NULL)
+		return (NULL);
+
+	while (!(is_operator(copy->str)))
 	{
-		arr = realloc(arr, (sizeof(char*) * ++count));
-		if (arr == NULL)
-			return (NULL);
-		arr[(count - 1)] = copy->str;
+		arr[count++] = copy->str;
+
 		if (copy->next != NULL)
 			copy = copy->next;
 		else
 			break;
 	}
-	arr = realloc(arr, (sizeof(char*) * ++count));
-	if (arr == NULL)
-	{
-		return (NULL);
-	}
 
-	arr[(count - 1)] = copy->str;
+	arr[count] = NULL;
 
 	*head =  copy;
 

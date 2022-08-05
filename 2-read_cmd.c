@@ -20,7 +20,6 @@ exec_l *read_cmd(void)
 	if (strcmp(av, "\n") == 0)
 		return (NULL);
 
-
 	parsedAv = tokenize_arg(av, delim);
 	copyP_Av = parsedAv;
 /*	op_count = count_cmd(parsedAv);

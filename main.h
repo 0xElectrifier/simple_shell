@@ -36,4 +36,5 @@ char **track_cmd(arg_l **head);
 arg_l *construct_argL(arg_l **head, char *str);
 int count_cmd(arg_l *str);
 int is_operator(char *str);
+size_t list_len(const arg_l *h);
 exec_l *construct_execL(exec_l **head, char **arr, arg_l *parsedAv);
